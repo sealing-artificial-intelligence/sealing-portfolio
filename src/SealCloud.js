@@ -48,10 +48,10 @@ const SealCloud = ({ isLoggedIn, handleLogout }) => {
         </div>
         
         <div style={{ display: 'flex', gap: '1rem' }}>
-          <a href={isLoggedIn ? "/subscriptions" : "/auth"} className="cta-button primary">
+          <a href={isLoggedIn ? "/subscriptions" : "/login"} className="cta-button primary">
             Subscriptions
           </a>
-          <a href={isLoggedIn ? "/cloud" : "/auth"} className="cta-button primary">
+          <a href={isLoggedIn ? "/cloud" : "/login"} className="cta-button primary">
             Get Started
           </a>
         </div>
