@@ -1,0 +1,381 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+  background-color: #f8f9fa;
+  color: #212529;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header and Navigation */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  border-radius: 9999px;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #333333, #1a1a1a);
+}
+
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .nav-desktop {
+    display: flex;
+  }
+}
+
+.nav-link {
+  color: #212529;
+  transition-property: color;
+  transition-duration: 200ms;
+}
+
+.nav-link:hover {
+  color: #333333;
+}
+
+.cta-button {
+  background-color: #1a1a1a;
+  color: #fff;
+  font-weight: 700;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  border-radius: 9999px;
+  transition-property: color, background-color, transform;
+  transition-duration: 200ms;
+  transform: scale(1);
+}
+
+.cta-button:hover {
+  background-color: #333333;
+  transform: scale(1.05);
+}
+
+.nav-mobile-button {
+  display: flex;
+  color: #212529;
+}
+
+@media (min-width: 768px) {
+  .nav-mobile-button {
+    display: none;
+  }
+}
+
+.nav-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e9ecef;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.cta-button-mobile {
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  transition: background-color 200ms;
+}
+
+.cta-button-mobile:hover {
+  background-color: #333333;
+}
+
+/* Main Content */
+.main-content {
+  padding-top: 6rem;
+}
+
+/* Hero Section */
+.hero-section {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(to right, #1a1a1a, #333333, #444444);
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 4.5rem;
+  }
+}
+
+.hero-subtitle {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  color: #495057;
+}
+
+@media (min-width: 768px) {
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+.hero-buttons {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .hero-buttons {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.primary-button {
+  background-color: #1a1a1a;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition-property: transform;
+  transition-duration: 300ms;
+  transform: scale(1);
+}
+
+.primary-button:hover {
+  background-color: #333333;
+  transform: scale(1.05);
+}
+
+.secondary-button {
+  background-color: #fff;
+  color: #212529;
+  border: 1px solid #ced4da;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition-property: transform;
+  transition-duration: 300ms;
+  transform: scale(1);
+}
+
+.secondary-button:hover {
+  background-color: #e9ecef;
+  transform: scale(1.05);
+}
+
+/* Features Section (previously removed, keeping placeholders) */
+.features-section {
+  background-color: #f8f9fa;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* About Section */
+.about-section {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5rem 1.5rem;
+  text-align: center;
+  background-color: #e9ecef;
+}
+
+.about-container {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-text {
+  margin-top: 1rem;
+  color: #495057;
+  line-height: 1.75;
+}
+
+/* Contact Section */
+.contact-section {
+  background-color: #f8f9fa;
+  padding: 5rem 1.5rem;
+  text-align: center;
+}
+
+.contact-container {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-info {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .contact-info {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-icon {
+  color: #1a1a1a;
+}
+
+.contact-link {
+  color: #495057;
+  text-decoration: none;
+  transition: color 200ms;
+}
+
+.contact-link:hover {
+  color: #212529;
+  text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+  background-color: #e9ecef;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  border-top: 1px solid #ced4da;
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  text-align: center;
+  color: #495057;
+}
+
+.logo-brand-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.logo-footer {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  border-radius: 9999px;
+}
+
+.brand-name-footer {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #333333, #1a1a1a);
+}
+
+.copyright {
+  margin-top: 0;
+}
+
+.footer-links {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer-link {
+  color: #495057;
+  transition: color 200ms;
+}
+
+.footer-link:hover {
+  color: #212529;
+}

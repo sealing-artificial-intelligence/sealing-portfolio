@@ -1,0 +1,249 @@
+/* cloud.css */
+
+.cloud-dark {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cloud-header {
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cloud-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.cloud-subtitle {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.upload-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #007bff;
+  color: #1a1a1a;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.upload-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.cloud-main {
+  width: 100%;
+  max-width: 800px;
+}
+
+.file-list-container {
+  background-color: #1a1a1a;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 200ms ease;
+  cursor: pointer;
+}
+
+.file-item:hover {
+  background-color: #2a2a2a;
+}
+
+.file-icon-container {
+  color: #a0a0a0;
+}
+
+.file-name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* New styles for the top dashboard bar */
+.cloud-dashboard-summary {
+  width: 100%;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .cloud-dashboard-summary {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+
+/* Styles for disk space section inside the dashboard */
+.disk-space-section {
+  width: 100%;
+  max-width: 250px;
+  background-color: #f0f2f5;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.disk-space-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.disk-space-info {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.disk-space-progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e9ecef;
+  border-radius: 9999px;
+}
+
+.disk-space-progress-fill {
+  height: 100%;
+  width: 50%; /* Example value, this can be dynamically set */
+  background-color: #007bff;
+  border-radius: 9999px;
+}
+
+/* New styles for the storage cards inside the dashboard */
+.storage-cards-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 1.5rem;
+}
+
+.storage-card {
+  background-color: #f0f2f5;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 200ms ease;
+  cursor: pointer;
+  width: calc(33.333% - 1rem); /* Distribute space evenly */
+}
+
+.storage-card:hover {
+  transform: translateY(-3px);
+}
+
+.storage-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-top: 0.5rem;
+}
+
+.go-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  background-color: #007bff;
+  color: #1a1a1a;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 200ms ease, transform 200ms ease;
+  margin-top: 1rem;
+  width: 100%;
+  text-decoration: none;
+}
+
+.go-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+/* New styles for the logout button */
+.logout-button {
+  background-color: #1a1a1a;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.logout-button:hover {
+  background-color: #333333;
+  transform: translateY(-1px);
+}
+
+.cloud-header .logout-button {
+  margin-right: 0;
+}
+
+.photo-go-button {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  width: auto; /* let content determine size */
+}
+
+/* Optional: target more specifically */
+.storage-card.photo-storage .go-button {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  width: auto;
+}
+
+/* Resize buttons for Photo and Docs storage */
+.photo-storage .go-button,
+.docs-storage .go-button {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  width: auto;
+}

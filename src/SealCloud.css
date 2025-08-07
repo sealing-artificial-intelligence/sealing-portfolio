@@ -1,0 +1,213 @@
+/* SealCloud.css */
+
+.seal-cloud-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background-color: #87CEEB; /* A light sky blue */
+  
+  /* Add a gradient overlay to make the background less distracting */
+  position: relative;
+  z-index: 0;
+}
+
+.seal-cloud-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(240, 242, 245, 0.5); /* Semi-transparent overlay */
+  z-index: -1;
+}
+
+.seal-cloud-header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1rem 2rem;
+}
+
+.seal-cloud-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.seal-cloud-nav .logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.seal-cloud-nav .brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.seal-cloud-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.seal-cloud-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  z-index: 1; /* Ensure content is above the background */
+}
+
+.seal-cloud-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.seal-cloud-subtitle {
+  font-size: 1.25rem;
+  color: #6c757d;
+  margin-bottom: 2rem;
+}
+
+.seal-cloud-content {
+  font-size: 1rem;
+  color: #495057;
+  max-width: 600px;
+}
+
+/* New styles for the cards */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon-container {
+  background-color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+/* Common button styles from App.css for consistency */
+.cta-button.secondary {
+  background-color: transparent;
+  color: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.cta-button.secondary:hover {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.cta-button.primary {
+  background-color: #1a1a1a;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition-property: transform;
+  transition-duration: 300ms;
+  transform: scale(1);
+}
+
+.cta-button.primary:hover {
+  background-color: #333333;
+  transform: scale(1.05);
+}
+
+.cta-button.get-started {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.cta-button.get-started:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Checklist styles */
+.seal-cloud-checklist {
+  margin-top: 2rem;
+}
+
+.seal-cloud-checklist ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns checklist items to the left */
+  gap: 0.75rem;
+}
+
+.seal-cloud-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+}
+
+.checklist-icon {
+  color: #4CAF50; /* A nice green color for the checkmark */
+  font-weight: bold;
+}
