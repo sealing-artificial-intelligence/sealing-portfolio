@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/sealing-portfolio/static/css/main.73db948b.css",
+    "main.js": "/sealing-portfolio/static/js/main.03bb4a5e.js",
+    "static/js/453.7bff9d39.chunk.js": "/sealing-portfolio/static/js/453.7bff9d39.chunk.js",
+    "index.html": "/sealing-portfolio/index.html",
+    "main.73db948b.css.map": "/sealing-portfolio/static/css/main.73db948b.css.map",
+    "main.03bb4a5e.js.map": "/sealing-portfolio/static/js/main.03bb4a5e.js.map",
+    "453.7bff9d39.chunk.js.map": "/sealing-portfolio/static/js/453.7bff9d39.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.73db948b.css",
+    "static/js/main.03bb4a5e.js"
+  ]
+}
