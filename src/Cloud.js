@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Cloud.css';
-import { HardDrive, Image, FileSearch, ArrowRight } from 'lucide-react';
+import { HardDrive, Image, FileSearch, ArrowRight, Cpu, ImageIcon } from 'lucide-react';
 
 const Cloud = () => {
   // Placeholder data for demonstration purposes
@@ -61,17 +61,14 @@ const Cloud = () => {
     fetchDiskSpace();
   }, []); // The empty array ensures this effect runs only once on mount
 
-  return (
+   return (
     <div className="cloud-dark">
-      {/* Container for the swimming fish animation */}
       <div className="fish-container">
-        {/* Render multiple fish with different sizes and speeds */}
         {[...Array(10)].map((_, index) => (
           <div
             key={index}
             className="fish"
             style={{
-              // Use CSS variables for dynamic animation
               '--size': `${Math.random() * 0.8 + 0.4}rem`,
               '--speed': `${Math.random() * 10 + 10}s`,
               '--delay': `-${Math.random() * 10}s`,
@@ -80,6 +77,7 @@ const Cloud = () => {
           />
         ))}
       </div>
+
       <header className="cloud-header">
         <div>
           <h1 className="cloud-title">Your Cloud Storage</h1>
@@ -89,7 +87,6 @@ const Cloud = () => {
       </header>
 
       <div className="cloud-dashboard-summary">
-        {/* New section for disk space */}
         <section className="disk-space-section">
           <h2 className="disk-space-title">Available disk space</h2>
           {diskSpace.loading ? (
@@ -108,7 +105,6 @@ const Cloud = () => {
           )}
         </section>
 
-        {/* New section for storage cards */}
         <section className="storage-cards-container">
           <div className="storage-card vector-storage">
             <HardDrive size={32} />
@@ -118,19 +114,21 @@ const Cloud = () => {
               <ArrowRight size={16} />
             </button>
           </div>
+
           <div className="storage-card photo-storage">
             <Image size={32} />
             <h3 className="storage-card-title">Photo Storage</h3>
             <a
-                href="https://cloud-front-kappa.vercel.app/"
-                className="go-button"
-                target="_blank"
-                rel="noopener noreferrer"
+              href="https://cloud-front-kappa.vercel.app/"
+              className="go-button"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-                <span>Go</span>
-                <ArrowRight size={16} />
+              <span>Go</span>
+              <ArrowRight size={16} />
             </a>
-        </div>
+          </div>
+
           <div className="storage-card docs-storage">
             <FileSearch size={32} />
             <h3 className="storage-card-title">Docs Workspace</h3>
@@ -143,6 +141,26 @@ const Cloud = () => {
               <span>Go</span>
               <ArrowRight size={16} />
             </a>
+          </div>
+
+          {/* New: General Purpose Data Synthesizer */}
+          <div className="storage-card data-synthesizer">
+            <Cpu size={32} />
+            <h3 className="storage-card-title">General Purpose Data Synthesizer</h3>
+            <button className="go-button">
+              <span>Go</span>
+              <ArrowRight size={16} />
+            </button>
+          </div>
+
+          {/* New: Text to Image Dataset Generator */}
+          <div className="storage-card text-to-image-generator">
+            <ImageIcon size={32} />
+            <h3 className="storage-card-title">Text to Image Dataset Generator</h3>
+            <button className="go-button">
+              <span>Go</span>
+              <ArrowRight size={16} />
+            </button>
           </div>
         </section>
       </div>

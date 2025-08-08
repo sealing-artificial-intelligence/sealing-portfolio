@@ -36,9 +36,7 @@ const HomePageContent = ({ handleScrollToSection, displayedTitle }) => (
           Your trusted partner for secure, intelligent, and scalable AI solutions.
         </p>
         <div className="hero-buttons">
-          <a href="/seal-cloud" className="primary-button">
-            Go to Seal Cloud
-          </a>
+          
         </div>
       </div>
     </section>
@@ -51,7 +49,7 @@ const HomePageContent = ({ handleScrollToSection, displayedTitle }) => (
           Building the future of AI, one solution at a time.
         </p>
         <p className="about-text">
-          Founded in 2024, Sealing is dedicated to delivering cutting-edge AI technology that empowers businesses to thrive. We believe that secure, scalable, and intelligent solutions should be accessible to everyone. Our team of experts works tirelessly to build a platform that is not only powerful but also intuitive and reliable.
+          Founded in 2025, Sealing is dedicated to delivering cutting-edge AI technology that empowers businesses to thrive. We believe that secure, scalable, and intelligent solutions should be accessible to everyone. Our team of experts works tirelessly to build a platform that is not only powerful but also intuitive and reliable.
         </p>
         <p className="about-text">
           From automated workflows to advanced data analytics, Sealing provides the tools you need to stay ahead of the curve.
@@ -69,14 +67,14 @@ const HomePageContent = ({ handleScrollToSection, displayedTitle }) => (
         <div className="contact-info">
           <div className="contact-item">
             <Mail size={24} className="contact-icon" />
-            <a href="mailto:contact@sealing.ai" className="contact-link">
-              contact@sealing.ai
+            <a href="techscope2025il@gmail.com" className="contact-link">
+              techscope2025il@gmail.com
             </a>
           </div>
           <div className="contact-item">
             <Phone size={24} className="contact-icon" />
-            <a href="tel:+1234567890" className="contact-link">
-              +1 (234) 567-890
+            <a href="tel:+9720584493025" className="contact-link">
+              +972 (058) 4493025
             </a>
           </div>
         </div>
