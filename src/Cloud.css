@@ -1,249 +1,249 @@
 /* cloud.css */
 
+/* --- Overall layout and light theme --- */
 .cloud-dark {
+  background-color: #ffffff; /* Changed to white */
+  color: #1a1a1a; /* Changed to dark for readability */
   font-family: 'Inter', sans-serif;
-  background-color: #f8f9fa;
-  color: #212529;
   min-height: 100vh;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative; /* Added for the fish container */
+  overflow: hidden; /* To keep the fish animation within the view */
 }
 
-.cloud-header {
-  margin-bottom: 2rem;
+/* --- Fish animation styles --- */
+.fish-container {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 800px;
+  height: 100%;
+  pointer-events: none; /* Allows clicks to pass through */
+  z-index: 0; /* Ensures the fish are in the background */
+}
+
+.fish {
+  position: absolute;
+  background: linear-gradient(to right, #333333, #000000); /* Changed to black gradient */
+  width: var(--size, 1rem); /* Dynamic size */
+  height: var(--size, 1rem);
+  border-radius: 50%;
+  animation: swim var(--speed, 15s) linear infinite var(--delay, 0s);
+  transform-origin: center;
+  top: var(--top, 50%); /* Dynamic vertical position */
+}
+
+.fish::before,
+.fish::after {
+  content: '';
+  position: absolute;
+  background-color: transparent;
+  border: calc(var(--size, 1rem) / 2) solid #333333; /* Changed border color to dark */
+  border-left-color: transparent;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.fish::before {
+  left: 70%;
+  width: var(--size, 1rem);
+  height: var(--size, 1rem);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.fish::after {
+  left: 70%;
+  width: var(--size, 1rem);
+  height: var(--size, 1rem);
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+@keyframes swim {
+  0% {
+    left: -10%;
+    transform: rotateY(0deg) translateY(0) scale(1);
+  }
+  25% {
+    transform: rotateY(0deg) translateY(-20px) scale(1.05);
+  }
+  50% {
+    left: 110%;
+    transform: rotateY(0deg) translateY(0) scale(1);
+  }
+  50.01% {
+    left: 110%;
+    transform: rotateY(180deg) translateY(0) scale(1);
+  }
+  75% {
+    transform: rotateY(180deg) translateY(20px) scale(1.05);
+  }
+  100% {
+    left: -10%;
+    transform: rotateY(180deg) translateY(0) scale(1);
+  }
+}
+
+/* --- Header and nav styles --- */
+.cloud-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 10;
 }
 
 .cloud-title {
   font-size: 2.5rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 0.5rem;
-  flex-grow: 1;
-  text-align: center;
+  font-weight: 800;
+  margin: 0;
 }
 
 .cloud-subtitle {
   font-size: 1rem;
-  color: #6c757d;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.upload-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #007bff;
-  color: #1a1a1a;
-  font-weight: 700;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 200ms ease, transform 200ms ease;
-}
-
-.upload-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-}
-
-.cloud-main {
-  width: 100%;
-  max-width: 800px;
-}
-
-.file-list-container {
-  background-color: #1a1a1a;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.file-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  transition: background-color 200ms ease;
-  cursor: pointer;
-}
-
-.file-item:hover {
-  background-color: #2a2a2a;
-}
-
-.file-icon-container {
   color: #a0a0a0;
+  margin: 0.5rem 0 0 0;
 }
 
-.file-name {
-  font-size: 1rem;
-  font-weight: 600;
+.logout-button {
+  background-color: transparent;
+  color: #1a1a1a; /* Changed for readability */
+  border: 1px solid #1a1a1a; /* Changed for readability */
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* New styles for the top dashboard bar */
+.logout-button:hover {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+/* --- Dashboard summary --- */
 .cloud-dashboard-summary {
-  width: 100%;
-  max-width: 800px;
-  background-color: #ffffff;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  padding: 2rem;
-  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  position: relative;
+  z-index: 10;
 }
 
 @media (min-width: 768px) {
   .cloud-dashboard-summary {
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
   }
 }
 
-
-/* Styles for disk space section inside the dashboard */
+/* --- Disk space section --- */
 .disk-space-section {
-  width: 100%;
-  max-width: 250px;
-  background-color: #f0f2f5;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  flex: 1;
+  background-color: #f0f2f5; /* Adjusted for light theme */
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .disk-space-title {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
   color: #1a1a1a;
-  margin-bottom: 0.5rem;
 }
 
 .disk-space-info {
-  font-size: 0.875rem;
-  color: #6c757d;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #495057; /* Adjusted for light theme */
+  margin: 0 0 1rem 0;
 }
 
 .disk-space-progress-bar {
   width: 100%;
-  height: 8px;
-  background-color: #e9ecef;
+  height: 0.75rem;
+  background-color: #e9ecef; /* Adjusted for light theme */
   border-radius: 9999px;
+  overflow: hidden;
 }
 
 .disk-space-progress-fill {
   height: 100%;
-  width: 50%; /* Example value, this can be dynamically set */
-  background-color: #007bff;
+  background: linear-gradient(90deg, #60c9f1, #4a90e2);
   border-radius: 9999px;
+  transition: width 0.5s ease-in-out;
 }
 
-/* New styles for the storage cards inside the dashboard */
+/* --- Storage cards --- */
 .storage-cards-container {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
+  flex: 2;
+  display: grid;
   gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .storage-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .storage-cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .storage-card {
-  background-color: #f0f2f5;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 200ms ease;
-  cursor: pointer;
-  width: calc(33.333% - 1rem); /* Distribute space evenly */
+  background-color: #f0f2f5; /* Adjusted for light theme */
+  padding: 1.5rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .storage-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.storage-card .lucide-react {
+  color: #4a90e2;
+  margin-bottom: 1rem;
 }
 
 .storage-card-title {
   font-size: 1rem;
   font-weight: 600;
+  margin: 0;
   color: #1a1a1a;
-  margin-top: 0.5rem;
 }
 
 .go-button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
-  background-color: #007bff;
-  color: #1a1a1a;
-  font-weight: 500;
-  padding: 0.4rem 0.8rem;
-  border-radius: 9999px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 200ms ease, transform 200ms ease;
+  gap: 0.5rem;
+  color: #4a90e2;
+  font-weight: 600;
   margin-top: 1rem;
-  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
 .go-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-1px);
+  color: #333333; /* Adjusted for light theme */
 }
 
-/* New styles for the logout button */
-.logout-button {
-  background-color: #1a1a1a;
-  color: #fff;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 200ms ease, transform 200ms ease;
+.go-button .lucide-react {
+  transition: transform 0.3s;
 }
 
-.logout-button:hover {
-  background-color: #333333;
-  transform: translateY(-1px);
-}
-
-.cloud-header .logout-button {
-  margin-right: 0;
-}
-
-.photo-go-button {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.6rem;
-  width: auto; /* let content determine size */
-}
-
-/* Optional: target more specifically */
-.storage-card.photo-storage .go-button {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.6rem;
-  width: auto;
-}
-
-/* Resize buttons for Photo and Docs storage */
-.photo-storage .go-button,
-.docs-storage .go-button {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.6rem;
-  width: auto;
+.go-button:hover .lucide-react {
+  transform: translateX(5px);
 }

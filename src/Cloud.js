@@ -63,6 +63,23 @@ const Cloud = () => {
 
   return (
     <div className="cloud-dark">
+      {/* Container for the swimming fish animation */}
+      <div className="fish-container">
+        {/* Render multiple fish with different sizes and speeds */}
+        {[...Array(10)].map((_, index) => (
+          <div
+            key={index}
+            className="fish"
+            style={{
+              // Use CSS variables for dynamic animation
+              '--size': `${Math.random() * 0.8 + 0.4}rem`,
+              '--speed': `${Math.random() * 10 + 10}s`,
+              '--delay': `-${Math.random() * 10}s`,
+              '--top': `${Math.random() * 100}%`,
+            }}
+          />
+        ))}
+      </div>
       <header className="cloud-header">
         <div>
           <h1 className="cloud-title">Your Cloud Storage</h1>
