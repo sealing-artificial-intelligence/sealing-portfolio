@@ -1,12 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import './Cloud.css';
-import { HardDrive, Image, FileSearch, ArrowRight, Cpu, ImageIcon } from 'lucide-react';
+import {
+  HardDrive,
+  Image,
+  FileSearch,
+  ArrowRight,
+  Cpu,
+  Key,
+  Database,
+  Monitor,
+} from 'lucide-react';
 
 const Cloud = () => {
-  // Placeholder data for demonstration purposes
-  const files = [];
+  // Generate fish styles once on mount
+  const [fishStyles, setFishStyles] = useState([]);
 
-  // State to manage disk space information
+  useEffect(() => {
+    const styles = Array(10)
+      .fill(0)
+      .map(() => ({
+        '--size': `${Math.random() * 0.8 + 0.4}rem`,
+        '--speed': `${Math.random() * 10 + 10}s`,
+        '--delay': `-${Math.random() * 10}s`,
+        '--top': `${Math.random() * 100}%`,
+      }));
+    setFishStyles(styles);
+  }, []);
+
+  // Disk space state and fetching
   const [diskSpace, setDiskSpace] = useState({
     used: 0,
     total: 100,
@@ -15,29 +36,24 @@ const Cloud = () => {
     error: null,
   });
 
-  // useEffect hook to fetch disk space data on component mount
   useEffect(() => {
     const fetchDiskSpace = async () => {
       try {
-        const username = "test_user"; // Using a placeholder username as there's no user context
-        const response = await fetch('https://yearly-notable-newt.ngrok-free.app/disk-space', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username: username }),
-        });
+        const username = localStorage.getItem('username') || 'test_user'; // Get username from localStorage or fallback
+        const response = await fetch(
+          'https://yearly-notable-newt.ngrok-free.app/disk-space',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username }),
+          }
+        );
 
-        if (!response.ok) {
-          throw new Error('Failed to fetch disk space data');
-        }
+        if (!response.ok) throw new Error('Failed to fetch disk space data');
 
         const data = await response.json();
-        
-        // Assuming the API returns a number representing used space in GB
-        // Added a check to prevent toFixed from being called on an undefined value
-        const used = (data && data.used_space_gb) ? data.used_space_gb : 0; 
-        const total = 100; // Total space is hardcoded as 100GB in the UI
+        const used = data?.used_space_gb ?? 0;
+        const total = 100;
         const percentage = (used / total) * 100;
 
         setDiskSpace({
@@ -47,43 +63,48 @@ const Cloud = () => {
           loading: false,
           error: null,
         });
-
       } catch (error) {
-        console.error("Error fetching disk space:", error);
-        setDiskSpace(prevState => ({
-          ...prevState,
+        console.error('Error fetching disk space:', error);
+        setDiskSpace((prev) => ({
+          ...prev,
           loading: false,
-          error: "Failed to load disk space. Please try again later.",
+          error: 'Failed to load disk space. Please try again later.',
         }));
       }
     };
 
     fetchDiskSpace();
-  }, []); // The empty array ensures this effect runs only once on mount
+  }, []);
 
-   return (
+  // Logout handler clears stored user data and redirects to login page
+  const handleLogout = () => {
+    localStorage.removeItem('username');
+    localStorage.removeItem('token'); // remove token if applicable
+    window.location.href = '/login';
+  };
+
+  return (
     <div className="cloud-dark">
       <div className="fish-container">
-        {[...Array(10)].map((_, index) => (
-          <div
-            key={index}
-            className="fish"
-            style={{
-              '--size': `${Math.random() * 0.8 + 0.4}rem`,
-              '--speed': `${Math.random() * 10 + 10}s`,
-              '--delay': `-${Math.random() * 10}s`,
-              '--top': `${Math.random() * 100}%`,
-            }}
-          />
+        {fishStyles.map((style, index) => (
+          <div key={index} className="fish" style={style} />
         ))}
       </div>
 
-      <header className="cloud-header">
-        <div>
-          <h1 className="cloud-title">Your Cloud Storage</h1>
-          <p className="cloud-subtitle">Access and manage all your files and folders.</p>
+      <header className="cloud-header" style={{ alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <img
+            src={`${process.env.PUBLIC_URL}/sealing.png`}
+            alt="Sealing Logo"
+            style={{ width: '64px', height: '64px', objectFit: 'contain' }}
+          />
+          <h1 className="cloud-title" style={{ margin: 0 }}>
+            Your Cloud Storage
+          </h1>
         </div>
-        <button className="logout-button">Logout</button>
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
       </header>
 
       <div className="cloud-dashboard-summary">
@@ -92,14 +113,19 @@ const Cloud = () => {
           {diskSpace.loading ? (
             <p className="disk-space-info">Loading...</p>
           ) : diskSpace.error ? (
-            <p className="disk-space-info" style={{ color: 'red' }}>{diskSpace.error}</p>
+            <p className="disk-space-info" style={{ color: 'red' }}>
+              {diskSpace.error}
+            </p>
           ) : (
             <>
               <p className="disk-space-info">
                 {diskSpace.used.toFixed(2)}GB of {diskSpace.total}GB used
               </p>
               <div className="disk-space-progress-bar">
-                <div className="disk-space-progress-fill" style={{ width: `${diskSpace.percentage}%` }}></div>
+                <div
+                  className="disk-space-progress-fill"
+                  style={{ width: `${diskSpace.percentage}%` }}
+                />
               </div>
             </>
           )}
@@ -107,12 +133,12 @@ const Cloud = () => {
 
         <section className="storage-cards-container">
           <div className="storage-card vector-storage">
-            <HardDrive size={32} />
+            <Database size={32} />
             <h3 className="storage-card-title">Vector Storage</h3>
-            <button className="go-button">
+            <a href="/vector-storage" className="go-button">
               <span>Go</span>
               <ArrowRight size={16} />
-            </button>
+            </a>
           </div>
 
           <div className="storage-card photo-storage">
@@ -143,24 +169,31 @@ const Cloud = () => {
             </a>
           </div>
 
-          {/* New: General Purpose Data Synthesizer */}
           <div className="storage-card data-synthesizer">
             <Cpu size={32} />
             <h3 className="storage-card-title">General Purpose Data Synthesizer</h3>
-            <button className="go-button">
+            <a href="/data-synthesizer" className="go-button">
               <span>Go</span>
               <ArrowRight size={16} />
-            </button>
+            </a>
           </div>
 
-          {/* New: Text to Image Dataset Generator */}
           <div className="storage-card text-to-image-generator">
-            <ImageIcon size={32} />
+            <Monitor size={32} />
             <h3 className="storage-card-title">Text to Image Dataset Generator</h3>
-            <button className="go-button">
+            <a href="/text-to-image-generator" className="go-button">
               <span>Go</span>
               <ArrowRight size={16} />
-            </button>
+            </a>
+          </div>
+
+          <div className="storage-card api-key-card">
+            <Key size={32} />
+            <h3 className="storage-card-title">Get API Key</h3>
+            <a href="/api" className="go-button">
+              <span>Go</span>
+              <ArrowRight size={16} />
+            </a>
           </div>
         </section>
       </div>

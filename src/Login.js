@@ -42,6 +42,7 @@ const Login = () => {
         
         // Set the login status in local storage before redirecting
         localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('username', email)
         window.location.href = '/';
       } else {
         // Handle non-200 responses.

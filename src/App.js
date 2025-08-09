@@ -7,6 +7,10 @@ import SignUp from './SignUp.js';
 import './Auth.css';
 import Subscriptions from './Subscriptions.js';
 import Cloud from './Cloud.js';
+import Api from './Api.js';
+import VectorStorage from './VectorStorage.js'
+import GeneralDataGenerator from './GeneralDataGenerator.js'
+import TextToImageGenerator from './TextToImageGenerator.js'
 import {
   Sparkles,
   Zap,
@@ -23,7 +27,7 @@ import {
 } from 'lucide-react';
 
 // Main content component for the homepage
-const HomePageContent = ({ handleScrollToSection, displayedTitle }) => (
+const HomePageContent = ({ handleScrollToSection, displayedTitle, isLoggedIn }) => (
   <main className="main-content">
     {/* Hero Section */}
     <section id="home" className="hero-section">
@@ -36,7 +40,20 @@ const HomePageContent = ({ handleScrollToSection, displayedTitle }) => (
           Your trusted partner for secure, intelligent, and scalable AI solutions.
         </p>
         <div className="hero-buttons">
-          
+          {/* Existing buttons can go here */}
+          {/* New Go to Seal Cloud Button */}
+          <button
+            className="cta-button"
+            disabled={!isLoggedIn}
+            onClick={() => {
+              if (isLoggedIn) {
+                window.history.pushState(null, '', '/seal-cloud');
+                window.dispatchEvent(new PopStateEvent('popstate'));
+              }
+            }}
+          >
+            Go to Seal Cloud
+          </button>
         </div>
       </div>
     </section>
@@ -163,6 +180,18 @@ const App = () => {
   }
   if(currentPage === '/cloud'){
     return <Cloud />;
+  }
+  if(currentPage === '/api'){
+    return <Api />
+  }
+  if(currentPage === '/vector-storage'){
+    return <VectorStorage />
+  }
+  if(currentPage === '/data-synthesizer'){
+    return <GeneralDataGenerator />
+  }
+  if(currentPage === '/text-to-image-generator'){
+    return <TextToImageGenerator />
   }
 
 

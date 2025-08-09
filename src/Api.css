@@ -1,0 +1,133 @@
+.api-container {
+  max-width: 480px;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-family: 'Inter', sans-serif;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+}
+
+.api-container h1 {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #357abd;
+}
+
+.error-message {
+  color: #cc0000;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.keys-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.key-item {
+  background-color: #f0f2f5;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  font-family: monospace;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  user-select: all;
+  cursor: pointer;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.key-item:hover {
+  background-color: #e0e6ef;
+}
+
+.fish-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.fish {
+  position: absolute;
+  top: var(--top, 50%);
+  width: var(--size, 12px);
+  height: var(--size, 12px);
+  border-radius: 50%;
+  background: linear-gradient(to right, #333, #000);
+  opacity: var(--opacity, 0.5);
+  pointer-events: none;
+  transform-origin: center;
+
+  /* Animate horizontal movement by translateX */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: swim-right; /* default, overridden inline */
+  animation-duration: var(--speed, 20s);
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes swim-right {
+  0% {
+    transform: translateX(-110vw) translateY(0);
+  }
+  50% {
+    transform: translateX(0) translateY(-20px) scale(1.05);
+  }
+  100% {
+    transform: translateX(110vw) translateY(0);
+  }
+}
+
+@keyframes swim-left {
+  0% {
+    transform: translateX(110vw) translateY(0);
+  }
+  50% {
+    transform: translateX(0) translateY(20px) scale(1.05);
+  }
+  100% {
+    transform: translateX(-110vw) translateY(0);
+  }
+}

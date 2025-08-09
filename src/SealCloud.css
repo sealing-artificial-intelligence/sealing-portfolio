@@ -334,3 +334,9 @@
     transform: translateX(calc(100vw + 100px)) rotateY(180deg);
   }
 }
+
+.logo {
+  width: 120px;  /* increase from whatever it was before */
+  height: auto;  /* keep aspect ratio */
+  object-fit: contain;
+}
