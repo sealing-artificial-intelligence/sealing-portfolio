@@ -11,6 +11,7 @@ import Api from './Api.js';
 import VectorStorage from './VectorStorage.js'
 import GeneralDataGenerator from './GeneralDataGenerator.js'
 import TextToImageGenerator from './TextToImageGenerator.js'
+import ImageStorage from './ImageStorage.js'
 import {
   Sparkles,
   Zap,
@@ -192,6 +193,9 @@ const App = () => {
   }
   if(currentPage === '/text-to-image-generator'){
     return <TextToImageGenerator />
+  }
+  if(currentPage == '/image-dataset-storage'){
+    return <ImageStorage />
   }
 
 

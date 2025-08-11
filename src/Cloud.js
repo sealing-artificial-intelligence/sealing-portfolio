@@ -141,34 +141,6 @@ const Cloud = () => {
             </a>
           </div>
 
-          <div className="storage-card photo-storage">
-            <Image size={32} />
-            <h3 className="storage-card-title">Photo Storage</h3>
-            <a
-              href="https://cloud-front-kappa.vercel.app/"
-              className="go-button"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>Go</span>
-              <ArrowRight size={16} />
-            </a>
-          </div>
-
-          <div className="storage-card docs-storage">
-            <FileSearch size={32} />
-            <h3 className="storage-card-title">Docs Workspace</h3>
-            <a
-              href="https://docsx-app.vercel.app/"
-              className="go-button"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>Go</span>
-              <ArrowRight size={16} />
-            </a>
-          </div>
-
           <div className="storage-card data-synthesizer">
             <Cpu size={32} />
             <h3 className="storage-card-title">General Purpose Data Synthesizer</h3>
@@ -182,6 +154,16 @@ const Cloud = () => {
             <Key size={32} />
             <h3 className="storage-card-title">Get API Key</h3>
             <a href="/api" className="go-button">
+              <span>Go</span>
+              <ArrowRight size={16} />
+            </a>
+          </div>
+
+          {/* New Image Dataset Storage card */}
+          <div className="storage-card image-dataset-storage">
+            <Image size={32} />
+            <h3 className="storage-card-title">Image Dataset Storage</h3>
+            <a href="/image-dataset-storage" className="go-button">
               <span>Go</span>
               <ArrowRight size={16} />
             </a>
