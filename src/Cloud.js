@@ -178,15 +178,6 @@ const Cloud = () => {
             </a>
           </div>
 
-          <div className="storage-card text-to-image-generator">
-            <Monitor size={32} />
-            <h3 className="storage-card-title">Text to Image Dataset Generator</h3>
-            <a href="/text-to-image-generator" className="go-button">
-              <span>Go</span>
-              <ArrowRight size={16} />
-            </a>
-          </div>
-
           <div className="storage-card api-key-card">
             <Key size={32} />
             <h3 className="storage-card-title">Get API Key</h3>
