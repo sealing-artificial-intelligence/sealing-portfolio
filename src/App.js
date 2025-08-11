@@ -45,12 +45,9 @@ const HomePageContent = ({ handleScrollToSection, displayedTitle, isLoggedIn }) 
           {/* New Go to Seal Cloud Button */}
           <button
             className="cta-button"
-            disabled={!isLoggedIn}
             onClick={() => {
-              if (isLoggedIn) {
-                window.history.pushState(null, '', '/seal-cloud');
-                window.dispatchEvent(new PopStateEvent('popstate'));
-              }
+              window.history.pushState(null, '', '/seal-cloud');
+              window.dispatchEvent(new PopStateEvent('popstate'));
             }}
           >
             Go to Seal Cloud
@@ -100,7 +97,6 @@ const HomePageContent = ({ handleScrollToSection, displayedTitle, isLoggedIn }) 
     </section>
   </main>
 );
-
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -154,6 +150,8 @@ const App = () => {
   // Function to handle logout
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('username'); // Also remove username
+    setIsLoggedIn(false); // Update the state
     window.location.href = '/'; // Redirect to home page
   };
 
@@ -169,13 +167,15 @@ const App = () => {
     return <SealCloud isLoggedIn={isLoggedIn} handleLogout={handleLogout} />;
   }
 
-  // Render Login or Sign Up page
+  // Pass the setIsLoggedIn function as a prop to the Login component.
   if (currentPage === '/login') {
-    return <Login />;
+    return <Login setIsLoggedIn={setIsLoggedIn} />;
   }
+  // Pass the setIsLoggedIn function as a prop to the SignUp component.
   if (currentPage === '/signup') {
-    return <SignUp />;
+    return <SignUp setIsLoggedIn={setIsLoggedIn} />;
   }
+  
   if (currentPage === '/subscriptions') {
     return <Subscriptions />;
   }
